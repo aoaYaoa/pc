@@ -94,6 +94,7 @@ window.onload=function(){
     };
     var lastIndex=0;
     var nowIndex=0;
+
     for (var i = 0; i <littleP.length; i++) {
         littleP[i].index=i;
         littleP[i].onclick=function(){

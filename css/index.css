@@ -142,9 +142,11 @@ img{display: block;}
     visibility: hidden;
     
 }
+.firstCar li.active{
+    visibility: visible;
+}
 .firstCar li:nth-child(1){
      background: #dc6c5f;
-    visibility: visible;
  }
 .firstCar li:nth-child(2){
     background: #95dc84;
