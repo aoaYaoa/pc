@@ -7,6 +7,8 @@ window.onload=function(){
     var contentH=content.offsetHeight;
     var nowIndex=0;
     var timer=null;
+    var firLi=document.querySelectorAll('.firstCar li');
+    var littleP=document.querySelectorAll('section .littleP li');
     headerHandle();
     function headerHandle() {
         arrowNode.style.left=headerLiNodes[0].offsetLeft+headerLiNodes[0].offsetWidth/2
@@ -89,7 +91,31 @@ window.onload=function(){
         arrowNode.style.left=headerLiNodes[nowIndex].offsetLeft+headerLiNodes[nowIndex].offsetWidth/2
             -arrowNode.offsetWidth/2+'px';
         ulNode.style.top=-contentH*nowIndex +'px';
-    }
+    };
+    var lastIndex=0;
+    var nowIndex=0;
+    for (var i = 0; i <littleP.length; i++) {
+        littleP[i].index=i;
+        littleP[i].onclick=function(){
+            nowIndex=this.index;
+            if(nowIndex==lastIndex) return;
+            for (var j = 0; j < firLi.length; j++) {
+                firLi[j].className='fontCon';
+            }
+            if(nowIndex > lastIndex){
+                firLi[nowIndex].className = 'fontCon rightShow';
+                firLi[lastIndex].className = 'fontCon leftHide';
+            }else{
+                firLi[nowIndex].className = 'fontCon leftShow';
+                firLi[lastIndex].className = 'fontCon rightHide';
+            }
+            littleP[lastIndex].className = '';
+            littleP[nowIndex].className = 'active';
 
+            //同步下标
+            lastIndex = nowIndex;
+        }
+
+    }
 
 };

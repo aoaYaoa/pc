@@ -5,6 +5,13 @@ li{list-style: none;}
 img{display: block;}
 .clearfix{*zoom: 1;}
 .clearfix:after{content: "";display: block;clear: both;}
+.fontCon{
+    color:#009ee0;
+    font-size:80px;
+    line-height:0.8;
+    font-weight:bold;
+    letter-spacing:-5px;
+}
 #wrap{
     width: 100%;
     height: 100%;
@@ -98,5 +105,124 @@ img{display: block;}
     margin-top: -260px;
     width: 1100px;
     height: 520px;
-    background: fuchsia;
+    /*background: fuchsia;*/
+}
+.content-main>li:nth-child(1){
+    background-image:url("../img/bg1.jpg");
+}
+.content-main>li:nth-child(2){
+    background-image:url("../img/bg2.jpg");
+}
+.content-main>li:nth-child(3){
+    background-image:url("../img/bg3.jpg");
+}
+.content-main>li:nth-child(4){
+    background-image:url("../img/bg4.jpg");
+}
+.content-main>li:nth-child(5){
+    background-image:url("../img/bg5.jpg");
+}
+.firstCar{
+    width:100%;
+    height: 100%;
+    /*background: lawngreen;*/
+    position: relative;
+    transform-style: preserve-3d;
+    perspective:2000px;
+}
+.firstCar li{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left:0;
+    top:0;
+    color: white;
+    text-align: center;
+    line-height: 520px;
+    visibility: hidden;
+    
+}
+.firstCar li:nth-child(1){
+     background: #dc6c5f;
+    visibility: visible;
+ }
+.firstCar li:nth-child(2){
+    background: #95dc84;
+}
+.firstCar li:nth-child(3){
+    background: #64b9d2;
+}
+.firstCar li:nth-child(4){
+    background: #000;
+}
+section .littleP{
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+section .littleP li{
+    width: 20px;
+    height: 20px;
+    background:rgba(255,255,255,0.5);
+    margin: 2px;
+    box-shadow:0 0 4px rgba(25,25,25,0.8) ;
+   float: left;
+    border-radius: 50%;
+}
+section .littleP li.active{
+    background: white;
+}
+/*
+  点击左边的小圆点时：
+    左边：向左位移，旋转30deg，隐藏到显示
+    右边：向右位置，旋转-30deg，显示到隐藏
+ */
+@keyframes leftShow {
+    0%{visibility: hidden;transform: translateZ(-200px);}
+    50%{transform: translateX(-40%) rotateY(30deg) scale(.8)}
+    100%{visibility: visible}
+}
+
+@keyframes rightHide {
+    0%{visibility: visible}
+    50%{transform: translateX(40%) rotateY(-30deg) scale(.8)}
+    100%{transform: translateZ(-200px);visibility: hidden;}
+}
+
+section .firstCar li.leftShow{
+    visibility: visible;
+    animation: leftShow 2s linear;
+}
+
+section .firstCar li.rightHide{
+    visibility: hidden;
+    animation: rightHide 2s linear;
+}
+/*
+  点击右边的小圆点时：
+    左边：向左位移，旋转30deg，显示到隐藏
+    右边：向右位置，旋转-30deg，隐藏到显示
+ */
+
+@keyframes leftHide {
+    0%{visibility: visible}
+    50%{transform: translateX(-40%) rotateY(30deg) scale(.8)}
+    100%{transform: translateZ(-200px);visibility: hidden;}
+}
+
+@keyframes rightShow {
+    0%{visibility: hidden;transform: translateZ(-200px);}
+    50%{transform: translateX(40%) rotateY(-30deg) scale(.8)}
+    100%{visibility: visible}
+}
+
+section .firstCar li.leftHide{
+    visibility: hidden;
+    animation: leftHide 2s linear;
+}
+
+section .firstCar li.rightShow{
+    visibility: visible;
+    animation: rightShow 2s linear;
 }
