@@ -92,30 +92,75 @@ window.onload=function(){
             -arrowNode.offsetWidth/2+'px';
         ulNode.style.top=-contentH*nowIndex +'px';
     };
-    var lastIndex=0;
-    var nowIndex=0;
+    homeHandle();
+    function homeHandle() {
+        var lastIndex = 0;
+        var nowIndex = 0;
+        var lastTime = 0;
+        var timer = null;
 
-    for (var i = 0; i <littleP.length; i++) {
-        littleP[i].index=i;
-        littleP[i].onclick=function(){
-            nowIndex=this.index;
-            if(nowIndex==lastIndex) return;
-            for (var j = 0; j < firLi.length; j++) {
-                firLi[j].className='fontCon';
+        for (var i = 0; i < littleP.length; i++) {
+            littleP[i].index = i;
+            littleP[i].onclick = function () {
+                var nowTime = Date.now();
+                if (nowTime - lastTime < 2100) {
+                    //说明两次点击间隔时间少于两秒
+                    return;
+                }
+
+                nowIndex = this.index;
+
+                if (nowIndex == lastIndex) return;
+                clearInterval(timer);
+                for (var j = 0; j < firLi.length; j++) {
+                    firLi[j].className = 'fontCon';
+                }
+                if (nowIndex > lastIndex) {
+                    firLi[nowIndex].className = 'fontCon rightShow';
+                    firLi[lastIndex].className = 'fontCon leftHide';
+                } else {
+                    firLi[nowIndex].className = 'fontCon leftShow';
+                    firLi[lastIndex].className = 'fontCon rightHide';
+                }
+                littleP[lastIndex].className = '';
+                littleP[nowIndex].className = 'active';
+
+                //同步下标
+                lastIndex = nowIndex;
+                lastTime = nowTime;
+                //autoPlay();
             }
-            if(nowIndex > lastIndex){
+
+        }
+
+        autoPlay();
+        function autoPlay() {
+            //自动轮播
+            timer = setInterval(function () {
+                //相当于点击右边小圆点  右边显示 左边隐藏
+                nowIndex++;
+
+                if (nowIndex === 4) {
+                    nowIndex = 0;
+                }
+
                 firLi[nowIndex].className = 'fontCon rightShow';
                 firLi[lastIndex].className = 'fontCon leftHide';
-            }else{
-                firLi[nowIndex].className = 'fontCon leftShow';
-                firLi[lastIndex].className = 'fontCon rightHide';
-            }
-            littleP[lastIndex].className = '';
-            littleP[nowIndex].className = 'active';
+                //修正小圆点的显示
+                littleP[lastIndex].className = '';
+                littleP[nowIndex].className = 'active';
 
-            //同步下标
-            lastIndex = nowIndex;
+                //同步下标
+                lastIndex = nowIndex;
+                //更新lastTime时间
+                lastTime = Date.now();
+
+            }, 2100)
         }
+        content.onmouseenter = function () {
+            clearInterval(timer);
+        }
+        content.onmouseleave = autoPlay;
 
     }
 
