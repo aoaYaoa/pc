@@ -39,6 +39,11 @@ img{display: block;}
 .musicon{
     float: left;
     margin-top: 50px;
+    width:15px;
+    height: 15px;
+    background-image:url("../img/musicoff.gif");
+    background-repeat: no-repeat;
+    cursor: pointer;
 }
 .nav{
     float: right;
@@ -94,6 +99,23 @@ img{display: block;}
     transition: top 1s;
 
 }
+.sideNav{
+    position: absolute;
+    right:10px;
+    top:50%;
+    transform: translateY(50%);
+}
+.sideNav li{
+    width:15px;
+    height: 15px;
+    border: 1px solid white;
+    margin-top: 10px;
+    border-radius: 50%;
+}
+.sideNav li.active{
+    background: white;
+}
+.active{background: white;}
 .content-main>li{
     position: relative;
     width: 100%;

@@ -11,6 +11,9 @@ window.onload=function() {
     var littleP = document.querySelectorAll('section .littleP li');
     var teamUl = document.querySelector('.teamPerson');
     var teamLis = document.querySelectorAll('.teamPerson li');
+    var sideNav =document.querySelectorAll('.sideNav li');
+    var musicon =document.querySelector('.musicon');
+    var audio =document.querySelector('audio');
 
     headerHandle();
     function headerHandle() {
@@ -31,12 +34,13 @@ window.onload=function() {
     function move(nowIndex) {
         for (var j = 0; j < upNode.length; j++) {
             upNode[j].style.width = '0';
-
+            sideNav[j].className = '';
         }
         upNode[nowIndex].style.width = '100%';
         arrowNode.style.left = headerLiNodes[nowIndex].offsetLeft + headerLiNodes[nowIndex].offsetWidth / 2
             - arrowNode.offsetWidth / 2 + 'px';
         ulNode.style.top = -contentH * nowIndex + 'px';
+        sideNav[nowIndex].className = 'active';
 
     }
 
@@ -300,6 +304,35 @@ window.onload=function() {
             }
         }
 
+    }
+
+    for (var i = 0; i < sideNav.length; i++) {
+        sideNav[i].index = i;
+        sideNav[i].onclick = function () {
+            nowIndex = this.index;
+            move(nowIndex);
+        }
+    }
+    musicon.onclick = function () {
+        if (audio.paused) {
+            //说明当前音乐是暂停的，点击播放
+            audio.play();
+            this.style.backgroundImage = 'url("img/musicon.gif")';
+        } else {
+            //说明当前音乐是播放的，点击暂停
+            audioNode.pause();
+            this.style.backgroundImage = 'url("img/musicoff.gif")';
+        }
+    }.onclick = function () {
+        if (audio.paused) {
+            //说明当前音乐是暂停的，点击播放
+            audio.play();
+            this.style.backgroundImage = 'url("img/musicon.gif")';
+        } else {
+            //说明当前音乐是播放的，点击暂停
+            audio.pause();
+            this.style.backgroundImage = 'url("img/musicoff.gif")';
+        }
     }
 }
 
