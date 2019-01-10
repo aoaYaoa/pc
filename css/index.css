@@ -334,6 +334,11 @@ section .firstCar li.rightShow{
 .courseList .line:nth-child(3){left: 234px;}
 .courseList .line:nth-child(4){left: 354px;}
 .courseList .line:nth-child(5){left: 474px;}
+.plane1{ width:359px; height:283px; background:url(../img/plane1.png) no-repeat; position:absolute; left:300px; top:-100px; transition:1s;}
+.plane2{ width:309px; height:249px; background:url(../img/plane2.png) no-repeat; position:absolute; left:-100px; top:200px; transition:1s;}
+.plane3{ width:230px; height:182px; background:url(../img/plane3.png) no-repeat; position:absolute; left:300px; top:400px; transition:1s;}
+
+
 .works .works_title{
     position: relative;
     z-index: 5;
@@ -405,6 +410,10 @@ section .firstCar li.rightShow{
     background-repeat: no-repeat;
     animation: robotMove 5s linear infinite;
 }
+.pencel1{ width:180px; height:97px; background:url(../img/pencel1.png) no-repeat; position:absolute; transition:1s; left:500px; top:0;}
+.pencel2{ width:268px; height:38px; background:url(../img/pencel2.png) no-repeat; position:absolute; transition:1s; left:300px; top:250px;}
+.pencel3{ width:441px; height:231px; background:url(../img/pencel3.png) no-repeat; position:absolute; transition:1s; left:650px; top:300px;}
+
 
 @keyframes robotMove {
     0%{}
@@ -538,8 +547,45 @@ section .firstCar li.rightShow{
 .team .teamPerson li:nth-child(4){
     background-position: -710px 0px;
 }
+.bootAnimation{
+    width:100%;
+    height:100%;
+    /*background: hotpink;*/
+    position: absolute;
+    left:0;
+    top:0;
+    z-index: 15;
 
+}
+.bootAnimation .top{
+    position: absolute;
+    width:100%;
+    height: 50%;
+    left:0;
+    top:0;
+    background: #009ee0;
+    transition: height 1s;
+}
+.bootAnimation .bottom{
+    position: absolute;
+    left:0;
+    bottom:0;
+    width:100%;
+    height: 50%;
+    background: #009ee0;
+    transition: height 1s;
+}
+.bootAnimation .line{
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 0;
+    height: 5px;
+    background: #ffffff;
+    transition: width 1s;
 
+}
 
 
 
